@@ -74,74 +74,74 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		try {
-			// Set your change report file name
-			BufferedWriter bw = new BufferedWriter(new FileWriter("changeReport.txt"));
-			String[] arg = new String[3];
-			// Set the commit directory from PyDriller 
-			String dataFileName = "commons-csv_data";
-			FileRetriver retriver = new FileRetriver(dataFileName);
-			for(String commit : retriver.getCommitDirectories()) {
-				bw.write("Commit: "+commit+"\n");
-				for(String beforeChangeFile : retriver.getCommitBeforeChangeJavaFiles(commit)) {
-					if(retriver.getCommitAfterChangeJavaFiles(commit).contains(beforeChangeFile)) {
-						reset();
-						arg[0] = "-ptree";
-						arg[1] = "./python/" + dataFileName + "/" + commit + "/before/"+ beforeChangeFile;
-						arg[2] = "./python/" + dataFileName + "/" + commit + "/after/"+ beforeChangeFile;
-						doAll(arg);
-						JavaParseTree beforeChangeTree = new JavaParseTree(parseTreeList.get(0));
-						JavaParseTree afterChangeTree = new JavaParseTree(parseTreeList.get(1));
-						beforeChangeTree.tokenizeParseTree();
-						afterChangeTree.tokenizeParseTree();
-						ChangeRuleSet ruleSet = new ChangeRuleSet(beforeChangeTree, afterChangeTree);
-						// Write the detected changes in the source code to a file
-						bw.write("\tFile:"+beforeChangeFile+"\n");
-						for(ChangeRule rule : ruleSet.getChangeRuleSet()) {
-							if(rule.getChangeCategory() != null)
-								bw.write("\t\t"+rule.getChangeCategory()+"\n");
-						}
-						bw.flush();
-					}
-					if(!retriver.getCommitAfterChangeJavaFiles(commit).contains(beforeChangeFile)) {
-						bw.write("\tFile:"+beforeChangeFile+"\n");
-						bw.write("\t\t"+ChangeCategory.DC_DELETE_CLASS+"\n");
-						bw.flush();
-					}
-				}
-				for(String afterChangeFile : retriver.getCommitAfterChangeJavaFiles(commit)) {
-					if(!retriver.getCommitAfterChangeJavaFiles(commit).contains(afterChangeFile)) {
-						bw.write("\tFile:"+afterChangeFile+"\n");
-						bw.write("\t\t"+ChangeCategory.AC_ADD_CLASS+"\n");
-						bw.flush();
-					}
-				}
-			}
-			bw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			// Set your change report file name
+//			BufferedWriter bw = new BufferedWriter(new FileWriter("changeReport.txt"));
+//			String[] arg = new String[3];
+//			// Set the commit directory from PyDriller
+//			String dataFileName = "commons-csv_data";
+//			FileRetriver retriver = new FileRetriver(dataFileName);
+//			for(String commit : retriver.getCommitDirectories()) {
+//				bw.write("Commit: "+commit+"\n");
+//				for(String beforeChangeFile : retriver.getCommitBeforeChangeJavaFiles(commit)) {
+//					if(retriver.getCommitAfterChangeJavaFiles(commit).contains(beforeChangeFile)) {
+//						reset();
+//						arg[0] = "-ptree";
+//						arg[1] = "./python/" + dataFileName + "/" + commit + "/before/"+ beforeChangeFile;
+//						arg[2] = "./python/" + dataFileName + "/" + commit + "/after/"+ beforeChangeFile;
+//						doAll(arg);
+//						JavaParseTree beforeChangeTree = new JavaParseTree(parseTreeList.get(0));
+//						JavaParseTree afterChangeTree = new JavaParseTree(parseTreeList.get(1));
+//						beforeChangeTree.tokenizeParseTree();
+//						afterChangeTree.tokenizeParseTree();
+//						ChangeRuleSet ruleSet = new ChangeRuleSet(beforeChangeTree, afterChangeTree);
+//						// Write the detected changes in the source code to a file
+//						bw.write("\tFile:"+beforeChangeFile+"\n");
+//						for(ChangeRule rule : ruleSet.getChangeRuleSet()) {
+//							if(rule.getChangeCategory() != null)
+//								bw.write("\t\t"+rule.getChangeCategory()+"\n");
+//						}
+//						bw.flush();
+//					}
+//					if(!retriver.getCommitAfterChangeJavaFiles(commit).contains(beforeChangeFile)) {
+//						bw.write("\tFile:"+beforeChangeFile+"\n");
+//						bw.write("\t\t"+ChangeCategory.DC_DELETE_CLASS+"\n");
+//						bw.flush();
+//					}
+//				}
+//				for(String afterChangeFile : retriver.getCommitAfterChangeJavaFiles(commit)) {
+//					if(!retriver.getCommitAfterChangeJavaFiles(commit).contains(afterChangeFile)) {
+//						bw.write("\tFile:"+afterChangeFile+"\n");
+//						bw.write("\t\t"+ChangeCategory.AC_ADD_CLASS+"\n");
+//						bw.flush();
+//					}
+//				}
+//			}
+//			bw.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
-//		// Test it with a single file
-//		String[] arg = new String[3];
-//		arg[0] = "-ptree";
-//		//				arg[1] = "./python/commons-csv_data/f7c2ca216608457071ab45d05223952a69f76d58/before/CSVPrinterTest.java";
-//		//				arg[2] = "./python/commons-csv_data/f7c2ca216608457071ab45d05223952a69f76d58/after/CSVPrinterTest.java";
-//
-//		arg[1] = "./examples/before/Unicode.java";
-//		arg[2] = "./examples/after/Unicode.java";
-//
-//		doAll(arg);
-//		JavaParseTree beforeChangeTree = new JavaParseTree(parseTreeList.get(0));
-//		JavaParseTree afterChangeTree = new JavaParseTree(parseTreeList.get(1));
-//		beforeChangeTree.tokenizeParseTree();
-//		afterChangeTree.tokenizeParseTree();
-//
-//		//				beforeChangeTree.printTree(beforeChangeTree.getRootNode(), 0);
-//
-//		// Test rules
-//
+		// Test it with a single file
+		String[] arg = new String[3];
+		arg[0] = "-ptree";
+		//				arg[1] = "./python/commons-csv_data/f7c2ca216608457071ab45d05223952a69f76d58/before/CSVPrinterTest.java";
+		//				arg[2] = "./python/commons-csv_data/f7c2ca216608457071ab45d05223952a69f76d58/after/CSVPrinterTest.java";
+
+		arg[1] = "./examples/before/Unicode.java";
+		arg[2] = "./examples/after/Unicode.java";
+
+		doAll(arg);
+		JavaParseTree beforeChangeTree = new JavaParseTree(parseTreeList.get(0));
+		JavaParseTree afterChangeTree = new JavaParseTree(parseTreeList.get(1));
+		beforeChangeTree.tokenizeParseTree();
+		afterChangeTree.tokenizeParseTree();
+
+		beforeChangeTree.printTree(beforeChangeTree.getRootNode(), 0);
+
+		// Test rules
+
 //		ChangeRuleSet ruleSet = new ChangeRuleSet(beforeChangeTree, afterChangeTree);
 //		ruleSet.printChangeTypes();
 
