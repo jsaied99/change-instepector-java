@@ -55,8 +55,8 @@ public class MethodInformationDataCollector {
 					}
 
 					method.setMethodBody(collectMethodBody(root));
+					// method.setIfList(collectIfStatements(root));
 					method.setIfList(collectIfStatements(method.getMethodBody()));
-					// method.setIf(collectIfs(method.getMethodBody()));
 				}
 			}
 			methodList.add(method);
@@ -298,20 +298,105 @@ public class MethodInformationDataCollector {
 		}
 		return null;
 	}
+
+
+	public CodeComponentNode recursiveTraversal(CodeComponentNode root){
+		// exit recursion if root is null or root if and ifStatement
+		if(root == null || root.getType().equals("(ifThenStatement")) {
+			return root;
+		}
+		else{
+			// if root is not null, traverse through children
+			for(CodeComponentNode child : root.getChildren()){
+				// recursive call
+				// System.out.println("CHILD: " + child.getType());
+				recursiveTraversal(child);
+			}
+			return root;
+		}
+	}
 	
 	private ArrayList<String> collectIfStatements(CodeComponentNode root) {
 
 		ArrayList<String> ifStatements = new ArrayList<String>();
 		System.out.println("collecting ifs");
 		int counter = 0;
-		for (CodeComponentNode child : root.getChildren()) {
-			System.out.println("child: " + child.getType());
-			if (child.getType().equals("(ifThenStatement")) {
-				// ifStatements.add(child.getCodeList().get(0));
+		// System.out.println("child FIRST CODE: " + root.getChildren().size());
+		// CodeComponentNode child = root.getChildren().get(0);
+		// System.out.println("child: " + child.getType());
+		// System.out.println("child: " + child.getChildren().get(0).getType());
 
-				counter++;
-			}
+		CodeComponentNode poss = recursiveTraversal(root);
+
+		if (poss != null) {
+			System.out.println("poss: " + poss.getType());
+			System.out.println("poss: " + poss.getCodeList());
 		}
+		// for(CodeComponentNode ch : root.getChildren()){
+		// 	// while(ch.getChildren().size() > 0) {
+		// 	// 	ch = ch.getChildren().get(0);
+		// 	// }
+
+		// 	// traverse every single children of every node
+		// 	if (ch.getChildren().size() > 0){
+				
+		// 	}
+		// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// while(child != null && !child.getType().equals("(ifStatement")){
+
+		// 	System.out.println("child: " + child.getType());
+		// 	System.out.println("child CODE: " + child.getChildren());
+		// 	if (child.getChildren().size() > 0)
+		// 		child = child.getChildren().get(0);
+		// 	else{
+		// 		child = null;
+		// 	}
+		// }
+		// if (child != null){
+		// 	System.out.println("if statement found");
+		// }
+		// for (CodeComponentNode child : root.getChildren()) {
+		// 	System.out.println("child: " + child.getType());
+		// 	if (child.getType().equals("(methodBody")) {
+		// 		System.out.println("method body");
+
+		// 		for (CodeComponentNode methodBodyChild : child.getChildren()) {
+
+		// 			System.out.println("method body child: " + methodBodyChild.getType());
+		// 			if (methodBodyChild.getType().equals("(block")) {
+		// 				for (CodeComponentNode blockChild : methodBodyChild.getChildren()) {
+		// 					System.out.println("block child: " + blockChild.getType());
+		// 					if (blockChild.getType().equals("(ifStatement")) {
+		// 						System.out.println("if statement: ");
+		// 						ifStatements.add(blockChild.getCodeList().get(0));
+		// 						counter++;
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 		// ifStatements.add(child.getCodeList().get(0));
+
+		// 		// counter++;
+		// 	}
+		// }
+
+		// iterate through children of root
+		// while ()
+		// iterate throguh whole block 
+//		for 
 
 		System.out.println("ifs: " + counter);
 		// print if List
