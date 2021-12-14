@@ -29,6 +29,7 @@ public class AddMethod extends ChangeRule{
 	@Override
 	public boolean isChangeCategory(JavaParseTree beforeChangeCode, JavaParseTree afterChangeCode) {
 		MethodInformationDataCollector beforeChange = new MethodInformationDataCollector();
+		System.out.println("beforeChangeCode: ");
 		beforeChange.collectMethods(beforeChangeCode.getRootNode());
 
 		MethodInformationDataCollector afterChange = new MethodInformationDataCollector();

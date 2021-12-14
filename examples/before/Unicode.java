@@ -1,6 +1,13 @@
 public abstract final class Unicode extends Something implements AnotherThing {
         public static void main(String[] args) {
                 System.out.println("A = \uuu0041");
+
+                if (args.length > 0) {
+                        System.out.println("args[0] = " + args[0]);
+                }
+                if ( 3 == 3){
+                        System.out.println("3 == 3");
+                }
         }
         public static final int sum(int a, float b) {
         	return a + b;

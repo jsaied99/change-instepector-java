@@ -45,45 +45,45 @@ public class ChangeRuleSet{
 	private void initilizeChangeRules(JavaParseTree beforeChangeTree, JavaParseTree afterChangeTree) {
 		// Method Change Rules
 		changeRuleSet.add(new AddMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new IncreaseMethodAccessibility(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DecreaseMethodAccessibility(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddFinalModifierMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteFinalModifierMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddStaticModifierMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteStaticModifierMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddAbstractModifierMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteAbstractModifierMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new ChangeReturnTypeMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new ChangeParameterNamesMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new ChangeMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new ChangeParameterMethod(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new IncreaseMethodAccessibility(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DecreaseMethodAccessibility(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddFinalModifierMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteFinalModifierMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddStaticModifierMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteStaticModifierMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddAbstractModifierMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteAbstractModifierMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new ChangeReturnTypeMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new ChangeParameterNamesMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new ChangeMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new ChangeParameterMethod(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteMethod(beforeChangeTree, afterChangeTree));
 		//changeRuleSet.add(new ChangeNameMethod(beforeChangeTree, afterChangeTree));
 		
-		// Class Change Rules
-		changeRuleSet.add(new IncreaseClassAccessibility(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DecreaseClassAccessibility(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddFinalModifierClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteFinalModifierClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddStaticModifierClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteStaticModifierClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddAbstractModifierClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteAbstractModifierClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddParentClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteParentClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddClass(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteClass(beforeChangeTree, afterChangeTree));
+		// // Class Change Rules
+		// changeRuleSet.add(new IncreaseClassAccessibility(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DecreaseClassAccessibility(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddFinalModifierClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteFinalModifierClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddStaticModifierClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteStaticModifierClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddAbstractModifierClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteAbstractModifierClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddParentClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteParentClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddClass(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteClass(beforeChangeTree, afterChangeTree));
 		
-		// Field Change Rules
-		changeRuleSet.add(new IncreaseFieldAccessibility(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DecreaseFieldAccessibility(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddFinalModifierField(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteFinalModifierField(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddStaticModifierField(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteStaticModifierField(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new AddField(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new DeleteField(beforeChangeTree, afterChangeTree));
-		changeRuleSet.add(new ChangeTypeField(beforeChangeTree, afterChangeTree));
+		// // Field Change Rules
+		// changeRuleSet.add(new IncreaseFieldAccessibility(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DecreaseFieldAccessibility(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddFinalModifierField(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteFinalModifierField(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddStaticModifierField(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteStaticModifierField(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new AddField(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new DeleteField(beforeChangeTree, afterChangeTree));
+		// changeRuleSet.add(new ChangeTypeField(beforeChangeTree, afterChangeTree));
 	}
 	
 	public ChangeRuleSet(JavaParseTree beforeChangeTree, JavaParseTree afterChangeTree) {

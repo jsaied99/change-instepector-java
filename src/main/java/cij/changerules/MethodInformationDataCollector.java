@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import cij.changerules.method.MethodBodyInformation;
 import cij.changerules.method.MethodInformation;
 import cij.grammar.java.CodeComponentNode;
 
@@ -22,7 +23,8 @@ public class MethodInformationDataCollector {
 	public void collectMethods(CodeComponentNode root) {
 		// find the method declaration
 		if(root.getType().equals("(methodDeclaration")) {
-			MethodInformation method = new MethodInformation();
+			MethodBodyInformation method = new MethodBodyInformation();
+			// MethodInformation method = new MethodInformation();
 			for(CodeComponentNode child : root.getChildren()) {
 				if(child.getType().equals("(methodModifier") && !child.getCodeList().isEmpty()) {
 					// initialize the modifiers
@@ -53,6 +55,8 @@ public class MethodInformationDataCollector {
 					}
 
 					method.setMethodBody(collectMethodBody(root));
+					method.setIfList(collectIfStatements(method.getMethodBody()));
+					// method.setIf(collectIfs(method.getMethodBody()));
 				}
 			}
 			methodList.add(method);
@@ -293,5 +297,28 @@ public class MethodInformationDataCollector {
 			}
 		}
 		return null;
+	}
+	
+	private ArrayList<String> collectIfStatements(CodeComponentNode root) {
+
+		ArrayList<String> ifStatements = new ArrayList<String>();
+		System.out.println("collecting ifs");
+		int counter = 0;
+		for (CodeComponentNode child : root.getChildren()) {
+			System.out.println("child: " + child.getType());
+			if (child.getType().equals("(ifThenStatement")) {
+				// ifStatements.add(child.getCodeList().get(0));
+
+				counter++;
+			}
+		}
+
+		System.out.println("ifs: " + counter);
+		// print if List
+		for (String ifStatement : ifStatements) {
+			System.out.println(ifStatement);
+			// System.out.println("IF STATEMENT: " + ifStatement);
+		}
+		return ifStatements;
 	}
 }

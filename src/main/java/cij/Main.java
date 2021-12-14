@@ -142,8 +142,8 @@ public class Main {
 
 		// Test rules
 
-//		ChangeRuleSet ruleSet = new ChangeRuleSet(beforeChangeTree, afterChangeTree);
-//		ruleSet.printChangeTypes();
+		ChangeRuleSet ruleSet = new ChangeRuleSet(beforeChangeTree, afterChangeTree);
+		ruleSet.printChangeTypes();
 
 
 	}
