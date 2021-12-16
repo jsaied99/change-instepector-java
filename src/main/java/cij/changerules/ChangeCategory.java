@@ -34,6 +34,15 @@ public enum ChangeCategory {
 	CRM_CHANGE_RETURN_TYPE_METHOD,
 	CNPM_CHANGE_NAME_OF_PARAMETERS_METHOD,
 	CPM_CHANGE_PARAMETERS_OF_METHOD, // Except for the change of the names of the parameters
+
+
+	//Method Body changes
+	AD_IF_CONNECTION_ADDED,
+	DD_IF_CONNECTION_DELETED,
+	AD_FOR_CONNECTION_ADDED,
+	DD_FOR_CONNECTION_DELETED,
+	AD_WHILE_CONNECTION_ADDED,
+	DD_WHILE_CONNECTION_DELETED,
 	
 	// Field Change types
 	AF_ADD_FIELD, // A field decleration

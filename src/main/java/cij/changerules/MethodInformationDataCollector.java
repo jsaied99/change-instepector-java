@@ -10,14 +10,14 @@ import cij.grammar.java.CodeComponentNode;
 
 public class MethodInformationDataCollector {
 
-	private Set<MethodInformation> methodList = new HashSet<>();
+	private Set<MethodBodyInformation> methodList = new HashSet<>();
 	private ArrayList<String> ifStatementList = new ArrayList<>();
 
-	public Set<MethodInformation> getMethodList() {
+	public Set<MethodBodyInformation> getMethodList() {
 		return methodList;
 	}
 
-	public void setMethodList(Set<MethodInformation> methodList) {
+	public void setMethodList(Set<MethodBodyInformation> methodList) {
 		this.methodList = methodList;
 	}
 
@@ -64,7 +64,7 @@ public class MethodInformationDataCollector {
 			methodList.add(method);
 		}
 		else if(root.getType().equals("(constructorDeclaration")) {
-			MethodInformation method = new MethodInformation();
+			MethodBodyInformation method = new MethodBodyInformation();
 			for(CodeComponentNode child : root.getChildren()) {
 				if(child.getType().equals("(constructorModifier") && !child.getCodeList().isEmpty()) {
 					// initialize the modifiers
