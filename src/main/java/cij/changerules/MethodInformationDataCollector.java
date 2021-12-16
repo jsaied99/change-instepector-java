@@ -61,6 +61,8 @@ public class MethodInformationDataCollector {
 			}
 			method.setIfList(collectIfStatements(method.getMethodBody()));
 
+			System.out.println("Method: " + method.getIfList());
+
 			methodList.add(method);
 		}
 		else if(root.getType().equals("(constructorDeclaration")) {
@@ -303,29 +305,25 @@ public class MethodInformationDataCollector {
 	}
 
 
-	public void recursiveTraversal(CodeComponentNode root){
+	public void recursiveTraversal(CodeComponentNode root, String grammar){
 		// exit recursion if root is null or root if and ifStatement
-		if(root.getType().equals("(ifThenStatement")) {
-			// System.out.println("if statement" + root.getType());
-			// return root;
+		if(root.getType().equals(grammar)) {
 			ifStatementList.add(root.getType());
 		}
 		else{
 			// if root is not null, traverse through children
 			for(CodeComponentNode child : root.getChildren()){
-				// recursive call
-				// System.out.println("CHILD: " + child.getType());
-				recursiveTraversal(child);
+				recursiveTraversal(child, grammar);
 			}
-			// return root;
 		}
 	}
 	
 	private ArrayList<String> collectIfStatements(CodeComponentNode root) {
 
 		ArrayList<String> ifStatements = new ArrayList<String>();
-		recursiveTraversal(root);
+		recursiveTraversal(root, "(ifThenStatement");
 		ifStatements = ifStatementList;
+		System.out.println("IF STATEMENTS: " + ifStatements);
 		ifStatementList = new ArrayList<String>();
 
 		return ifStatements;

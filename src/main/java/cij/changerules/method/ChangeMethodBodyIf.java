@@ -46,6 +46,9 @@ public class ChangeMethodBodyIf extends ChangeRule {
                     ArrayList<String> beforeIfList = beforeChangeMethod.getIfList();
                     ArrayList<String> afterIfList = afterChangeMethod.getIfList();
 
+                    System.out.println("beforeIfList: " + beforeIfList);
+                    System.out.println("afterIfList: " + afterIfList);
+
                     if (beforeIfList.equals(afterIfList)) {
                         return false;
                     }
