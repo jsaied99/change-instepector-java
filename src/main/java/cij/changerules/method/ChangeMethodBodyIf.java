@@ -23,9 +23,9 @@ public class ChangeMethodBodyIf extends ChangeRule {
     public ChangeCategory getCategory() {
         if (isChangeCategory(treeBeforeChange, treeAfterChange)) {
             if (add){
-                return ChangeCategory.AD_IF_CONNECTION_ADDED;
+                return ChangeCategory.DD_IF_CONNECTION_DELETED;
             }
-            return ChangeCategory.DD_IF_CONNECTION_DELETED;
+            return ChangeCategory.AD_IF_CONNECTION_ADDED;
         }
         return null;
     }
@@ -46,11 +46,9 @@ public class ChangeMethodBodyIf extends ChangeRule {
                     ArrayList<String> beforeIfList = beforeChangeMethod.getIfList();
                     ArrayList<String> afterIfList = afterChangeMethod.getIfList();
 
-                    System.out.println("beforeIfList: " + beforeIfList);
-                    System.out.println("afterIfList: " + afterIfList);
-
                     if (beforeIfList.equals(afterIfList)) {
-                        return false;
+                        add = true;
+                        // return true;
                     }
                     else{
                         add = beforeIfList.size() > afterIfList.size();
