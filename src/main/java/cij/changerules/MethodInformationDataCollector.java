@@ -12,6 +12,8 @@ public class MethodInformationDataCollector {
 
 	private Set<MethodBodyInformation> methodList = new HashSet<>();
 	private ArrayList<String> ifStatementList = new ArrayList<>();
+	private ArrayList<String> whileStatementList = new ArrayList<>();
+	private ArrayList<String> forStatementList = new ArrayList<>();
 
 	public Set<MethodBodyInformation> getMethodList() {
 		return methodList;
@@ -60,6 +62,8 @@ public class MethodInformationDataCollector {
 				}
 			}
 			method.setIfList(collectIfStatements(method.getMethodBody()));
+			method.setWhileList(collectWhileStatements(method.getMethodBody()));
+			method.setForList(collectForStatements(method.getMethodBody()));
 
 			// System.out.println("Method: " + method.getIfList());
 
@@ -306,10 +310,16 @@ public class MethodInformationDataCollector {
 
 
 	public void recursiveTraversal(CodeComponentNode root, String grammar){
-		if(root.getType().equals(grammar)) { // need to add other ifs for other grammars
+		if(root.getType().equals("(ifThenStatement") && grammar.equals("(ifThenStatement")) { // need to add other ifs for other grammars
 			ifStatementList.add(root.getType());
 		}
-		else{
+		else if(root.getType().equals("(whileStatement") && grammar.equals("(whileStatement")) {
+			whileStatementList.add(root.getType());
+		}	
+		else if(root.getType().equals("(forStatement") && grammar.equals("(forStatement")) {
+			forStatementList.add(root.getType());
+		}
+		else {
 			for(CodeComponentNode child : root.getChildren()){
 				recursiveTraversal(child, grammar);
 			}
@@ -323,5 +333,21 @@ public class MethodInformationDataCollector {
 		ifStatements = ifStatementList;
 		ifStatementList = new ArrayList<String>();
 		return ifStatements;
+	}
+	
+	private ArrayList<String> collectWhileStatements(CodeComponentNode root) {
+		ArrayList<String> whileStatements = new ArrayList<String>();
+		recursiveTraversal(root, "(whileStatement");
+		whileStatements = whileStatementList;
+		whileStatementList = new ArrayList<String>();
+		return whileStatements;
+	}
+	
+	private ArrayList<String> collectForStatements(CodeComponentNode root) {
+		ArrayList<String> forStatements = new ArrayList<String>();
+		recursiveTraversal(root, "(forStatement");
+		forStatements = forStatementList;
+		forStatementList = new ArrayList<String>();
+		return forStatements;
 	}
 }

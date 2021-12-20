@@ -11,6 +11,13 @@ public abstract final class Unicode extends Something implements AnotherThing {
                 if ( 3 == 3){
                         System.out.println("3 == 3");
                 }
+                while(3 == 3) {
+                	System.out.println("3 == 3")
+                }
+                
+                for(int i = 0; i < 3; i++) {
+                	System.out.println("I'm in the for loop!");
+                }
         }
         public static final int sum(int a, float b) {
         	return a + b;

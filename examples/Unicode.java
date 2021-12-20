@@ -6,6 +6,9 @@ class Unicode {
         	int a = 6;
         	double x = 2.1;
         	System.out.println(a+x);
+        	if(3 == 3) {
+        		System.out.println("this is the if test");
+        	}
         }
         
         private static final int sum(int a, int b) {

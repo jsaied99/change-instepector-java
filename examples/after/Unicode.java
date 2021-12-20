@@ -1,9 +1,20 @@
 class Unicode extends Something{
         public static void main(String[] args) {
                 System.out.println("A = \uuu0041");
+                
+                while(3 == 3) {
+            		System.out.println("do nothing");
+            	}
+                while(4 == 4) {
+                	System.out.println("still do nothing");
+                }
         }
         public static final int sum(int a, float b) {
         	return a + b;
+        	
+        	while(3 == 3) {
+        		System.out.println("do nothing");
+        	}
         }
         /*
         private void printSomething() {

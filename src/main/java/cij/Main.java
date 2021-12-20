@@ -79,7 +79,7 @@ public class Main {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("changeReport.txt"));
 			String[] arg = new String[3];
 			// Set the commit directory from PyDriller
-			String dataFileName = "commons-codec_bug_fix_data";
+			String dataFileName = "commons-csv_data";
 			FileRetriver retriver = new FileRetriver(dataFileName);
 			for(String commit : retriver.getCommitDirectories()) {
 				bw.write("Commit: "+commit+"\n");
@@ -124,28 +124,28 @@ public class Main {
 		}
 
 		// Test it with a single file
-		// String[] arg = new String[3];
-		// arg[0] = "-ptree";
-		// //				arg[1] = "./python/commons-csv_data/f7c2ca216608457071ab45d05223952a69f76d58/before/CSVPrinterTest.java";
-		// //				arg[2] = "./python/commons-csv_data/f7c2ca216608457071ab45d05223952a69f76d58/after/CSVPrinterTest.java";
-
-		// arg[1] = "./examples/before/Unicode.java";
-		// arg[2] = "./examples/after/Unicode.java";
-
-		// doAll(arg);
-		// JavaParseTree beforeChangeTree = new JavaParseTree(parseTreeList.get(0));
-		// JavaParseTree afterChangeTree = new JavaParseTree(parseTreeList.get(1));
-		// System.out.println("Before Change Tree: ");
-		// beforeChangeTree.tokenizeParseTree();
-		// System.out.println("After Change Tree: ");
-		// afterChangeTree.tokenizeParseTree();
-
-		// // beforeChangeTree.printTree(beforeChangeTree.getRootNode(), 0);
-
-		// // Test rules
-
-		// ChangeRuleSet ruleSet = new ChangeRuleSet(beforeChangeTree, afterChangeTree);
-		// ruleSet.printChangeTypes();
+//		 String[] arg = new String[3];
+//		 arg[0] = "-ptree";
+//		 				arg[1] = "./python/commons-csv_data/f7c2ca216608457071ab45d05223952a69f76d58/before/CSVPrinterTest.java";
+//		 				arg[2] = "./python/commons-csv_data/f7c2ca216608457071ab45d05223952a69f76d58/after/CSVPrinterTest.java";
+//
+//		 arg[1] = "./examples/before/Unicode.java";
+//		 arg[2] = "./examples/after/Unicode.java";
+//
+//		 doAll(arg);
+//		 JavaParseTree beforeChangeTree = new JavaParseTree(parseTreeList.get(0));
+//		 JavaParseTree afterChangeTree = new JavaParseTree(parseTreeList.get(1));
+//		 System.out.println("Before Change Tree: ");
+//		 beforeChangeTree.tokenizeParseTree();
+//		 System.out.println("After Change Tree: ");
+//		 afterChangeTree.tokenizeParseTree();
+//
+//		  beforeChangeTree.printTree(beforeChangeTree.getRootNode(), 0);
+//
+//		// // Test rules
+//
+//		 ChangeRuleSet ruleSet = new ChangeRuleSet(beforeChangeTree, afterChangeTree);
+//		 ruleSet.printChangeTypes();
 
 
 	}

@@ -38,6 +38,8 @@ import cij.changerules.method.DeleteMethod;
 import cij.changerules.method.DeleteStaticModifierMethod;
 
 import cij.changerules.method.ChangeMethodBodyIf;
+import cij.changerules.method.ChangeMethodBodyWhile;
+import cij.changerules.method.ChangeMethodBodyFor;
 // import cij.changerules.method.IncreaseMethodAccessibility;
 
 import cij.grammar.java.JavaParseTree;
@@ -66,6 +68,8 @@ public class ChangeRuleSet{
 
 		// Method Body Changes
 		changeRuleSet.add(new ChangeMethodBodyIf(beforeChangeTree, afterChangeTree));
+		changeRuleSet.add(new ChangeMethodBodyWhile(beforeChangeTree, afterChangeTree));
+		changeRuleSet.add(new ChangeMethodBodyFor(beforeChangeTree, afterChangeTree));
 		
 		// // Class Change Rules
 		// changeRuleSet.add(new IncreaseClassAccessibility(beforeChangeTree, afterChangeTree));
